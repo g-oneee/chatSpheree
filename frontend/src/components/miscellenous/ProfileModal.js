@@ -19,7 +19,7 @@ export default function ProfileModal({ user, children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <div>
+    <>
       {children ? (
         <span onClick={onOpen}>{children}</span>
       ) : (
@@ -65,6 +65,6 @@ export default function ProfileModal({ user, children }) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </div>
+    </>
   );
 }
