@@ -18,7 +18,8 @@ import "./userAvatar/style.css";
 import ScrollableChats from "./ScrollableChats";
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5000";
+// const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-sphere-nmq3.onrender.com";
 var socket, selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const {
