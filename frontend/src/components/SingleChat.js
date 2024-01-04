@@ -66,24 +66,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   //   });
   // });
 
-  // useEffect(() => {
-  //   socket.on("message recieved", (newMessageReceived) => {
-  //     if (
-  //       !selectedChatCompare || // if chat is not selected or doesn't match current chat
-  //       selectedChatCompare._id !== newMessageReceived.chat._id
-  //     ) {
-  //       if (!notification.includes(newMessageReceived)) {
-  //         setNotification([newMessageReceived, ...notification]);
-  //         setFetchAgain(!fetchAgain);
-  //       }
-  //     } else {
-  //       setMessages([...messages, newMessageReceived]);
-  //       //  setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
-  //     }
-  //   });
-  // });
-
-  
   useEffect(() => {
     socket.on("message recieved", (newMessageReceived) => {
       if (
@@ -95,11 +77,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           setFetchAgain(!fetchAgain);
         }
       } else {
-        // setMessages([...messages, newMessageRecieved]);
-        setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
+        // setMessages([...messages, newMessageReceived]);
+         setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
       }
     });
   });
+
+  
+
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
 
