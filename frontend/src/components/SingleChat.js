@@ -132,7 +132,28 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       }
     }, timerLength);
   };
+const typingHandler1 = (e) => {
+  setNewMessage(e.target.value);
 
+  if (!socketConnected) return;
+
+  if (!typing) {
+    setTyping(true);
+    socket.emit("typing", selectedChat._id);
+  }
+
+  let lastTypingTime = new Date().getTime();
+  var timerLength = 3000;
+
+  setTimeout(() => {
+    var timeNow = new Date().getTime();
+    var timeDiff = timeNow - lastTypingTime;
+    if (timeDiff >= timerLength && typing) {
+      socket.emit("stop typing", selectedChat._id);
+      setTyping(false);
+    }
+  }, timerLength);
+};
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
       socket.emit("stop typing", selectedChat._id);
