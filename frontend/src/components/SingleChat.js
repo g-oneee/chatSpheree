@@ -66,10 +66,33 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   //   });
   // });
 
+
+  // main useeffect for message recieved
+  // useEffect(() => {
+  //   socket.on("message recieved", (newMessageReceived) => {
+  //     if (
+  //       !selectedChatCompare || // if chat is not selected or doesn't match current chat
+  //       selectedChatCompare._id !== newMessageReceived.chat._id
+  //     ) {
+  //       if (!notification.includes(newMessageReceived)) {
+  //         setNotification([newMessageReceived, ...notification]);
+  //         setFetchAgain(!fetchAgain);
+  //       }
+  //     } else {
+  //       // setMessages([...messages, newMessageReceived]);
+  //        setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
+  //     }
+  //   });
+  //    return () => {
+  //      socket.off("message recieved", handleNewMessage); // Clean up the event listener
+  //    };
+  // });
+
+  
   useEffect(() => {
-    socket.on("message recieved", (newMessageReceived) => {
+    const handleNewMessage = (newMessageReceived) => {
       if (
-        !selectedChatCompare || // if chat is not selected or doesn't match current chat
+        !selectedChatCompare ||
         selectedChatCompare._id !== newMessageReceived.chat._id
       ) {
         if (!notification.includes(newMessageReceived)) {
@@ -77,13 +100,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           setFetchAgain(!fetchAgain);
         }
       } else {
-        // setMessages([...messages, newMessageReceived]);
-         setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
+        setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
       }
-    });
-  });
+    };
 
-  
+    socket.on("message recieved", handleNewMessage);
+
+    return () => {
+      socket.off("message recieved", handleNewMessage); // Clean up the event listener
+    };
+  }, [selectedChatCompare, notification, fetchAgain]);
+
 
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
