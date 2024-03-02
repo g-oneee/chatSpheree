@@ -14,6 +14,8 @@ Welcome to ChatSphere! ChatSphere is a React-based web application that allows u
 
 - **Group Messaging:** Create and participate in group conversations with multiple users.
 
+- **State Management with Context API:** Utilizes React Context API for efficient state management.
+
 ## Usage
 
 1. **User Authentication:**
@@ -45,9 +47,4 @@ Welcome to ChatSphere! ChatSphere is a React-based web application that allows u
 
 - **Socket.IO:** Library for real-time web applications, facilitating bi-directional communication between web clients and servers.
 
-## Setup Instructions
-
-1. **Clone the Repository:**
-   ```bash
-   git clone <repository-url>
-   cd chatsphere
+- **React Context API:** Efficient state management for a smooth user experience.
