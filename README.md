@@ -12,6 +12,8 @@ Welcome to ChatSphere! ChatSphere is a React-based web application that allows u
 
 - **Private Messaging:** Have private conversations with individual users.
 
+- **Group Messaging:** Create and participate in group conversations with multiple users.
+
 ## Usage
 
 1. **User Authentication:**
@@ -20,11 +22,14 @@ Welcome to ChatSphere! ChatSphere is a React-based web application that allows u
 2. **Search for Users:**
    - Use the search functionality to find and connect with other users.
 
-3. **Initiate Chat:**
-   - Select a user from the search results and start a chat.
+3. **Initiate Private Chat:**
+   - Select a user from the search results and start a private chat.
 
-4. **Send and Receive Messages:**
-   - Enjoy real-time messaging with seamless communication.
+4. **Create a Group:**
+   - Create a new group and add users to initiate a group conversation.
+
+5. **Send and Receive Messages:**
+   - Enjoy real-time messaging in both private and group conversations.
 
 ## Technologies Used
 
